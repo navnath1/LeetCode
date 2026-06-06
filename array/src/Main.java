@@ -1,15 +1,72 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+/*
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+
+
+        Example 1:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Example 2:
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+Example 3:
+
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+
+Constraints:
+
+        2 <= nums.length <= 104
+        -109 <= nums[i] <= 109
+        -109 <= target <= 109
+Only one valid answer exists.
+
+
+        Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+*/
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        ArrayList<Integer> resultList = new ArrayList<>();
+
+        for(int i=0; i< nums.length; i++)
+        {
+            for(int j=i+1;j<nums.length; j++)
+            {
+                if(nums[i]+nums[j]==target && i!=j)
+                {
+                    resultList.add(i);
+                    resultList.add(j);
+                }
+            }
+        }
+
+
+        return resultList.stream().mapToInt(i -> i).toArray();
+
+    }
+}
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int[] nums = {2,7,11,15};
+        int target = 9;
+        Solution solution = new Solution();
+        int[] result = solution.twoSum(nums, target);
+        System.out.println(Arrays.toString(result));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+
     }
 }
